@@ -20,21 +20,4 @@ jobs:
       env:
         REGISTRY: ghcr.io
         IMAGE_NAME: ${{ github.repository }}
-        TAG: ${{ github.sha }}
-      secrets:
-        CR_PAT: ${{ secrets.CR_PAT }}
-      id: echo-tag
-
-    with:
-      args: |
-        --build-arg GITHUB_SHA=${GITHUB_SHA}
-        --build-arg GITHUB_REF=refs/heads/${GITHUB_REF}
-
-    - name: Publish to GitHub Container Registry
-      run: echo "The Docker image has been pushed to ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}"
-      env:
-        REGISTRY: ghcr.io
-        IMAGE_NAME: ${{ github.repository }}
-        TAG: ${{ github.sha }}
-      secrets:
-        CR_PAT: ${{ secrets.CR_PAT }}
+        TAG: ${{ github.sha
